@@ -4,10 +4,13 @@ use Module::Build;
 use File::Spec::Functions;
 use File::Path qw(mkpath);
 use POSIX qw(uname);
+use LWP::Simple;
 
 my $bin_dir = "bin";
 my $config_dir = "config";
 my $support_dir = "support";
+my $model_dir = "models/ac_models/english";
+my $model_url = "http://cvsp.cs.ntua.gr/~nassos/sail_align/english_htk.tgz";
 my $required_modules_hash_ref = {
        'Log::Log4perl' => '1.31',
        'Math::Random' => '0.71',
@@ -126,6 +129,15 @@ foreach my $util_tool (@util_binaries) {
         }
     }
 }
+
+# Download the acoustic models if they do not already exist
+if (!-e catfile($model_dir,"htk", "wsj_all_10000_32")) {
+    my $model_tgz = "models/ac_models/english/english_htk.tgz";
+    getstore($model_url, "models/ac_models/english/english_htk.tgz");
+    my $command = "tar xvf $model_tgz -C $model_url"; 
+    open(MPIPE, "$command 2>&1 |") || FATAL("Cannot open pipe to run command:\n$command\n");
+}
+
 
 # Properly modify the configuration file
 my $config_file_tmpl = catfile('support', 'config', 'timit_alignment.cfg');
