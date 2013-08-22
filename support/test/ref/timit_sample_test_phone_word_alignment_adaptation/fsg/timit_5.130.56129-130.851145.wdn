@@ -1,0 +1,11 @@
+VERSION=1.0
+N=5    L=4    
+I=0    W=!NULL               
+I=1    W=!NULL               
+I=2    W=SENSTART            
+I=3    W=I'D                 
+I=4    W=SENEND              
+J=0     S=4    E=1    
+J=1     S=0    E=2    
+J=2     S=2    E=3    
+J=3     S=3    E=4    

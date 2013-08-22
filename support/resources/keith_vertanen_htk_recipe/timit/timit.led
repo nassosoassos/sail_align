@@ -1,0 +1,57 @@
+# Map TIMIT phone set to CMU set
+SO
+
+# Merge the closure intervals of stops and the stop releases
+ME b bcl b
+ME d dcl d
+ME g gcl g
+ME p pcl p
+ME t tcl t
+ME k kcl k
+ME ch tcl ch
+ME jh dcl jh
+ME s tcl s
+
+# Remove any remaining clouse interval markers
+DE tcl
+DE pcl
+DE kcl
+DE gcl
+DE dcl
+DE bcl
+
+# Convert everything to single sil phone
+RE sil h# #h pau
+
+# epi denotes epenthetic silence which is often found between a fricative and a semivowel or nasal
+DE epi
+
+# Get rid of glottal stop q
+DE q
+
+# Change nasal flap nx, as in "winner"
+RE n nx
+
+# Change flap dx,  such as in words "muddy" or "dirty"
+RE d dx
+
+# Change voiced-h hv, a voiced allophone of h
+RE hh hv
+
+# Change fronted-u ux, allophone of uw
+RE uw ux
+
+# Change devoiced-schwa ax-h
+RE ax ax-h
+
+# Not sure theses are right
+RE ih eng
+RE ah ax
+RE ih ix
+RE l el
+RE m em
+RE n en
+RE er axr
+
+
+

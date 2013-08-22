@@ -1,0 +1,12 @@
+Revision history for SailAlign
+
+1.10    Wednesday, June 29th 2011
+        + Second release, thanks to Jangwon Kim for pointing out some problematic
+        cases of forced word alignment.
+        + Out-of-vocabulary words are treated as silence for forced word alignment
+        (which can optionally run after the iterative algorithm). 
+        + Minor bugfixes.
+
+1.00    Saturday, January 8th 2010    
+        + First version, released on an unsuspecting world.
+

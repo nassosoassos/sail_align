@@ -1,0 +1,19 @@
+HResults -n -A -T 1 -I /home/keith/htk/wsj0/si_dt_s6_words.mlf /home/keith/htk/wsj1/tiedlist /home/keith/htk/wsj1/recout_si_dt_s6ro200_tb750_prune350_cross_si284.mlf 
+====================== HTK Results Analysis =======================
+  Date: Tue Apr 25 06:33:39 2006
+  Ref : /home/keith/htk/wsj0/si_dt_s6_words.mlf
+  Rec : >me/keith/htk/wsj1/recout_si_dt_s6ro200_tb750_prune350_cross_si284.mlf
+------------------------ Overall Results --------------------------
+SENT: %Correct=32.50 [H=130, S=270, N=400]
+WORD: %Corr=91.27, Acc=90.36 [H=6020, D=71, S=505, I=60, N=6596]
+===================================================================
+HResults -n -h -A -T 1 -I /home/keith/htk/wsj0/si_dt_s6_words.mlf /home/keith/htk/wsj1/tiedlist /home/keith/htk/wsj1/recout_si_dt_s6ro200_tb750_prune350_cross_si284.mlf 
+    ,-------------------------------------------------------------.
+    | HTK Results Analysis at Tue Apr 25 06:33:39 2006            |
+    | Ref: /home/keith/htk/wsj0/si_dt_s6_words.mlf                |
+    | Rec: >1/recout_si_dt_s6ro200_tb750_prune350_cross_si284.mlf |
+    |=============================================================|
+    |           # Snt |  Corr    Sub    Del    Ins    Err  S. Err |
+    |-------------------------------------------------------------|
+    | Sum/Avg |  400  |  91.27   7.66   1.08   0.91   9.64  67.50 |
+    `-------------------------------------------------------------'

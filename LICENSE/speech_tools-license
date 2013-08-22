@@ -1,0 +1,60 @@
+EDINBURGH SPEECH TOOLS LIBRARY
+                 VERSION 1.2.96 August 2006
+
+Principal authors: Alan W Black, Paul Taylor, Richard Caley, 
+                   Simon King, Rob Clark and Korin Richmond
+
+Centre for Speech Technology
+University of Edinburgh 
+2 Buccleuch Place
+Edinburgh EH8 9LW, UK
+http://www.cstr.ed.ac.uk/projects/speech_tools
+
+Although this is a considered stable release, there are still a number
+of known parts are missing or incomplete.
+
+------------------------------------------------------------------------
+
+The Edinburgh speech tools system is a library of C++ classes, functions
+and utility programs that are frequently used in speech software. The
+system compiles to a single unix library .a file which can be linked
+with software. At present, C++ classes for several useful speech and
+language classes have been written, along with audio software and some
+basic signal processing software.
+
+========================================================================
+
+
+            Edinburgh Speech Tools Library version 1.2.96
+              Centre for Speech Technology Research                
+                   University of Edinburgh, UK                     
+                    Copyright (c) 1994-2006
+                      All Rights Reserved.                         
+                                                                   
+Permission is hereby granted, free of charge, to use and distribute  
+this software and its documentation without restriction, including   
+without limitation the rights to use, copy, modify, merge, publish,  
+distribute, sublicense, and/or sell copies of this work, and to      
+permit persons to whom this work is furnished to do so, subject to   
+the following conditions:                                            
+ 1. The code must retain the above copyright notice, this list of    
+    conditions and the following disclaimer.                         
+ 2. Any modifications must be clearly marked as such.                
+ 3. Original authors' names are not deleted.                         
+ 4. The authors' names are not used to endorse or promote products   
+    derived from this software without specific prior written        
+    permission.                                                      
+                                                                     
+THE UNIVERSITY OF EDINBURGH AND THE CONTRIBUTORS TO THIS WORK        
+DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      
+ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   
+SHALL THE UNIVERSITY OF EDINBURGH NOR THE CONTRIBUTORS BE LIABLE     
+FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   
+AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          
+ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       
+THIS SOFTWARE.                                                       
+
+========================================================================
+
+

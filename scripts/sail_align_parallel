@@ -1,0 +1,165 @@
+#!/usr/bin/perl -w 
+##===============================================================================
+#
+#         FILE:  sail_align_parallel
+#
+#        USAGE:  sail_align_parallel [-h] -c configuration_file -t text_dir -i audio_dir
+#													   -w working_dir [-a audio_suffix] [-s text_suffix]
+#
+#      EXAMPLE:  sail_align_parallel -i /home/databases/CoupTher/data/audio 
+#                     -t /home/databases/CoupTher/data/trans -w /home/work/speech_text_alignment/final_experiments -n 4 
+#                     -a wav -c /home/work/speech_text_alignment/config/coup_ther_alignment.cfg -f coup_ther_sessions.list &
+#
+#
+#  DESCRIPTION: Setup parallel multiple long speech-text alignment experiments
+#      OPTIONS:  -h							help
+#				 -i audio_dir				The directory with the audio files
+#				 -t text_dir                The directory with the text files
+#				 -s text_suffix             The suffix of the text filenames [cond.txt]
+#				 -a audio_suffix            The suffix of the audio filenames [wav]
+#				 -c configuration_file	  	Configuration file for the alignment process 
+#				 -w working_dir				Working directory
+#				 -n		                    Number of parallel jobs
+#				 -f f_list                  List of audio files (absolute paths)
+#				 -l f_list                  List of text files (absolute paths)
+#				 --tf [txt_no_times|speaker_per_line_no_times]    Transcription format [txt_no_times]
+# REQUIREMENTS:  Packages: 
+#				 Log4perl
+#				 SailTools
+#				 Parallel::ForkManager
+#
+#
+#         BUGS:  ---
+#        NOTES:  ---
+#       AUTHOR:  Nassos Katsamanis (NK), <http://sipi.usc.edu/~nkatsam>
+#      COMPANY:  SAIL, University of Southern California
+#      VERSION:  1.2
+#      CREATED:  02/12/2010 02:05:29 PM EEST
+#     REVISION:  ---
+#===============================================================================
+
+use strict;
+use warnings;
+use File::Basename;
+use File::Spec::Functions;
+use File::Path;
+use POSIX qw(ceil floor);
+use Log::Log4perl;
+use Getopt::Long;
+use SailTools::SailDataSet;
+use SailTools::SailComponent;
+use Parallel::ForkManager;
+
+my $conf = qq(
+	log4perl.category = DEBUG, ScreenApp
+	log4perl.appender.ScreenApp = Log::Log4perl::Appender::Screen
+	log4perl.appender.ScreenApp.layout   = Log::Log4perl::Layout::PatternLayout
+	log4perl.appender.ScreenApp.layout.ConversionPattern = [%p] (%F line %L) %m%n
+	);
+
+Log::Log4perl::init( \$conf);
+
+my $root_logger = Log::Log4perl->get_logger();
+
+# Temporary definitions, to be placed in global configuration file
+my $audio_dir = "audio";
+my $text_dir = "trans";
+my $configuration_file = "alignment.cfg";
+my $working_dir = "experiments";
+my $audio_suffix = "wav";
+my $text_suffix = "cond.txt";
+my $audio_file_list = "files.list";
+my $text_file_list = "files.list";
+my $n_processes = 3;
+my $trans_format = "txt_no_times";
+my $help;
+GetOptions( 'h' => \$help,
+	    't=s' => \$text_dir,
+	    'i=s' => \$audio_dir,
+	    'c=s' => \$configuration_file,
+	    'w=s' => \$working_dir,
+	    'a=s' => \$audio_suffix,
+            's=s' => \$text_suffix,
+            'npbs=s'=> \$n_processes,
+            'f=s' => \$audio_file_list,
+            'l=s' => \$text_file_list,
+            'tf=s' => \$trans_format,
+		) or usage();			
+if ($help) {usage();}
+
+my $audio_files_ref;
+my $text_files_ref;
+my $n_audio_files = 0;
+if ((!-e $audio_file_list) && (-e $audio_dir)) {
+  $audio_files_ref = SailTools::SailDataSet::find_files_with_suffix_in_dir($audio_dir, $audio_suffix);
+  $n_audio_files = @$audio_files_ref;
+  SailTools::SailComponent::print_into_file($audio_files_ref, $audio_file_list);
+  my @text_files;
+
+  for (my $file_index=0; $file_index<$n_audio_files; $file_index++) {
+	my $audio_filename = $audio_files_ref->[$file_index];
+	my ($audio_bname, $audio_path, $audio_sfx) = fileparse($audio_filename, ".$audio_suffix");
+	$audio_filename = catfile($audio_dir, $audio_filename);
+	$text_files[$file_index] = catfile($text_dir, $audio_path, $audio_bname.".$text_suffix");
+	$audio_files_ref->[$file_index] = $audio_filename;
+  }
+  $text_files_ref = \@text_files;
+}
+elsif (-e $text_file_list) {
+  $audio_files_ref = SailTools::SailComponent::read_from_file($audio_file_list);
+  $n_audio_files = @$audio_files_ref;
+  
+  $text_files_ref = SailTools::SailComponent::read_from_file($text_file_list);
+
+}
+else { usage();}
+
+$root_logger->debug("Number of files: $n_audio_files");
+
+my $audio_filename;
+my $text_filename;
+
+my $pm = new Parallel::ForkManager($n_processes);
+for (my $file_index=0; $file_index<$n_audio_files; $file_index++) {
+  my $pid = $pm->start and next;
+  $text_filename = $text_files_ref->[$file_index];
+  $audio_filename = $audio_files_ref->[$file_index];
+  $root_logger->debug("audio:$audio_filename text: $text_filename");
+
+  if (-e $text_filename) {
+      my ($audio_bname, $audio_path, $audio_sfx) = fileparse($audio_filename, ".$audio_suffix");
+      my $file_working_dir = catdir($working_dir, $audio_bname);
+      my $command = "sail_align ".
+                      "-t $text_filename -i $audio_filename -w $file_working_dir ".
+                        "-c $configuration_file --tf $trans_format";
+      SailTools::SailComponent::run($command);
+      }
+      else {
+         $root_logger->error("Missing transcription file: $text_filename");
+  }
+  $pm->finish;
+}
+$pm->wait_all_children;
+
+sub usage {
+	print qq{	
+#         FILE:  sail_align_parallel
+#
+#        USAGE:  sail_align_parallel [-h] -c configuration_file -t text_dir -i audio_dir
+#													   -w working_dir [-a audio_suffix] [-s text_suffix]
+#
+#  DESCRIPTION: Setup parallel multiple long speech-text alignment experiments
+#      OPTIONS:  -h							help
+#				 -i audio_dir				The directory with the audio files
+#				 -t text_dir                The directory with the text files
+#				 -s text_suffix             The suffix of the text filenames [cond.txt]
+#				 -a audio_suffix            The suffix of the audio filenames [wav]
+#				 -c configuration_file	  	Configuration file for the alignment process 
+#				 -w working_dir				Working directory
+#				 -n n_processes             Number of parallel processes
+#				 -f f_list                  List of audio files (absolute paths)
+#				 -l f_list                  List of text files (absolute paths)
+#				 --tf [txt_no_times|speaker_per_line_no_times]    Transcription format [txt_no_times]
+};	
+	exit;
+}

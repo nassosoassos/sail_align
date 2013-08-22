@@ -1,0 +1,14 @@
+# Initialize a HMM definition for each monophone based on the prototype
+# HMM definition, settings parameters using iterative scheme (HTKBook 8.2)
+#
+# Needs to be run from where the files listed in train.scp are relative to
+#
+# HInit parameters:
+#  -A         Print out command line options
+#  -T 1	     Tracing
+#  -l         Cut out segments with this label
+#  -o         Use this as the output name of the hmm (instead of prototype name)
+#  -M         Store output HMM files in this directory
+#  -S         List of all the feature vector files
+#  -I	     The MLF containing the labels for all the feature files
+HInit -A -T 1 -l !COL1 -o !COL1 -M $TRAIN_TIMIT/phone0 -S $TIMIT_DIR/train.scp -I $TRAIN_TIMIT/phone.mlf $TRAIN_TIMIT/proto >>$TRAIN_TIMIT/hinit.log

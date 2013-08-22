@@ -1,0 +1,17 @@
+
+
+		DUMP OF SYSTEM ALIGNMENT STRUCTURE
+
+System name:   support/test/ref/timit_sample_test_phone_word_alignment_adaptation/text_align/hyp_timit_5.151.839705-154.06997
+
+Speakers: 
+    0:  
+
+Speaker sentences   0:     #utts: 1
+id: 
+Scores: (#C #S #D #I) 8 0 0 0
+REF:  ask me to carry an oily rag like 
+HYP:  ask me to carry an oily rag like 
+Eval:                                  
+
+

@@ -1,0 +1,23 @@
+
+\data\
+ngram 1=6
+ngram 2=4
+ngram 3=0
+
+\1-grams:
+-0.30103	!!UNK
+-0.90309	</s>
+-99	<s>	-0.243038
+-0.90309	FOLLOW	-0.243038
+-0.90309	LITERATURE	-0.243038
+-0.90309	WILL	-0.243038
+
+\2-grams:
+-0.30103	<s> LITERATURE
+-0.30103	FOLLOW </s>
+-0.30103	LITERATURE WILL
+-0.30103	WILL FOLLOW
+
+\3-grams:
+
+\end\

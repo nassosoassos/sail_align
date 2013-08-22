@@ -1,0 +1,17 @@
+
+
+		DUMP OF SYSTEM ALIGNMENT STRUCTURE
+
+System name:   support/test/ref/timit_sample_test_phone_word_alignment_adaptation/text_align/hyp_timit_5.124.690732-126.411076
+
+Speakers: 
+    0:  
+
+Speaker sentences   0:     #utts: 1
+id: 
+Scores: (#C #S #D #I) 7 0 0 0
+REF:  in a large bowl don't ask me 
+HYP:  in a large bowl don't ask me 
+Eval:                              
+
+

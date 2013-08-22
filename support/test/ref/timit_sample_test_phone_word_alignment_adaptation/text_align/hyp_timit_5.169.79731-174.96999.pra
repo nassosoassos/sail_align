@@ -1,0 +1,17 @@
+
+
+		DUMP OF SYSTEM ALIGNMENT STRUCTURE
+
+System name:   support/test/ref/timit_sample_test_phone_word_alignment_adaptation/text_align/hyp_timit_5.169.79731-174.96999
+
+Speakers: 
+    0:  
+
+Speaker sentences   0:     #utts: 1
+id: 
+Scores: (#C #S #D #I) 12 0 0 0
+REF:  behind this the purchasers rejected the order in two letters written in 
+HYP:  behind this the purchasers rejected the order in two letters written in 
+Eval:                                                                         
+
+

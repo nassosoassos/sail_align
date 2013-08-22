@@ -1,0 +1,23 @@
+
+\data\
+ngram 1=6
+ngram 2=4
+ngram 3=0
+
+\1-grams:
+-0.30103	!!UNK
+-0.90309	</s>
+-99	<s>	-0.243038
+-0.90309	ADULTHOOD	-0.243038
+-0.90309	AND	-0.243038
+-0.90309	DON'T	-0.243038
+
+\2-grams:
+-0.30103	<s> AND
+-0.30103	ADULTHOOD DON'T
+-0.30103	AND ADULTHOOD
+-0.30103	DON'T </s>
+
+\3-grams:
+
+\end\

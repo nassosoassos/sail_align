@@ -1,0 +1,17 @@
+
+
+		DUMP OF SYSTEM ALIGNMENT STRUCTURE
+
+System name:   support/test/ref/timit_sample_test_phone_word_alignment_adaptation/text_align/hyp_timit_5.12.66-13.1
+
+Speakers: 
+    0:  
+
+Speaker sentences   0:     #utts: 1
+id: 
+Scores: (#C #S #D #I) 1 0 1 0
+REF:  tempted TO 
+HYP:  tempted ** 
+Eval:         D  
+
+

@@ -1,0 +1,17 @@
+
+
+		DUMP OF SYSTEM ALIGNMENT STRUCTURE
+
+System name:   support/test/ref/timit_sample_test_phone_word_alignment_adaptation/text_align/hyp_timit_5.35.27-39.58
+
+Speakers: 
+    0:  
+
+Speaker sentences   0:     #utts: 1
+id: 
+Scores: (#C #S #D #I) 11 0 0 0
+REF:  people are often excluded her wardrobe consists of only skirts and 
+HYP:  people are often excluded her wardrobe consists of only skirts and 
+Eval:                                                                    
+
+

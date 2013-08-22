@@ -1,0 +1,77 @@
+SailAlign
+
+Long speech-text alignment can facilitate large-scale study of rich spoken 
+language resources that have recently become widely accessible, e.g., collections 
+of audio books, or multimedia documents. SailAlign is an open-source software toolkit 
+for robust long speech-text alignment implementing an adaptive, iterative speech recognition 
+and text alignment scheme that allows for the processing of very long (and possibly noisy) 
+audio and is robust to transcription errors.
+
+The software package was originally presented at VLSP-2011:
+A. Katsamanis, M. Black, P. Georgiou, L. Goldstein and S. Narayanan, 
+SailAlign: Robust long speech-text alignment,
+in Proc. of Workshop on New Tools and Methods for Very-Large Scale Phonetics Research, Jan. 2011.
+
+INSTALLATION
+
+To install this module, run the following command while inside the SailAlign distribution folder. 
+The module can currently only work on linux - like operating systems. It has been tested in the following architectures:
+linux_i686, linux_x86_64 
+Compiled HTK binaries, including HDecode have to be available in your system, e.g., in the folder $HTK_BIN.
+You may need to be connected to the internet to install dependencies :
+
+       1) cpan Module::Build
+       	  This will install the Module::Build perl package from CPAN. You may skip this step if you have 
+	  the package already installed. It is used for the installation of the SailAlign package. If you haven't run the
+	  command cpan before you may have to go through a setup process. You can just
+	  select the default options when user input is required.  
+       2) perl Build.PL
+       	  This command configures the building process. Among others it will try to detect dependencies
+	  that are not installed in your system. Ignore any messages for missing dependencies in the beginning. 
+	  Provide the folder $HTK_BIN when asked. 
+       3) ./Build installdeps
+       	  Run this command if you got a message for missing dependencies in the previous step.
+       3) ./Build
+       	  This command will build the module.
+       4) sudo ./Build install
+          This command will install the module. The following perl scripts will be added to your path:
+	  sail_align, sail_align_parallel
+
+
+TESTING
+
+To test that the module has been properly installed you may run the following from inside the distribution folder:
+>> sail_align -i support/data/timit_5.wav -t support/data/timit_5.txt -w support/data/test/timit_sample_test 
+   	      -e timit_sample_test -c config/timit_alignment.cfg
+
+This will run the alignment algorithm for the audio file timit_5.wav and the corresponding transcription timit_5.txt. The 
+results will be in the working directory 'support/data/test/timit_sample_test'. You may check the tutorial in the 'docs'
+folder for additional details.
+
+SUPPORT AND DOCUMENTATION
+
+You may find additional documentation inside the docs subfolder, including the paper on SailAlign presented at 
+VLSP-2011 and a relevant tutorial that was given there as well.
+
+Contact Nassos Katsamanis for technical support.
+
+LICENSE AND COPYRIGHT
+
+Copyright (C) 2010-2011 Athanasios Katsamanis (http://sipi.usc.edu/~nkatsam)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2 dated June, 1991 or at your option
+any later version. SRILM binaries are only included in the distribution 
+for convenience and you may find the corresponding license, srilm-license, in the folder
+LICENSES.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+A copy of the GNU General Public License is available in the source tree;
+if not, write to the Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+

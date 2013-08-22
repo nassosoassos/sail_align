@@ -1,0 +1,10 @@
+
+HVite -t !COL3 -T 1 -H $TRAIN_WSJ0/hmm42/macros -H $TRAIN_WSJ0/hmm42/hmmdefs -S $WSJ0_DIR/nov92_test.scp -i $TRAIN_WSJ0/recout_!COL1_!COL2_!COL3.mlf -w $TRAIN_WSJ0/wdnet_bigram -p !COL1 -s !COL2 $TRAIN_WSJ0/dict_5k $TRAIN_WSJ0/tiedlist >>$TRAIN_WSJ0/hvite_nov92_grid.log
+
+echo Insertion penalty: !COL1 >> $TRAIN_WSJ0/hresults_nov92_grid.log
+echo LM scale factor:   !COL2 >> $TRAIN_WSJ0/hresults_nov92_grid.log
+echo Pruning:           !COL3 >> $TRAIN_WSJ0/hresults_nov92_grid.log
+
+HResults -A -T 1 -I $TRAIN_WSJ0/nov92_words.mlf $TRAIN_WSJ0/tiedlist $TRAIN_WSJ0/recout_!COL1_!COL2_!COL3.mlf >>$TRAIN_WSJ0/hresults_nov92_grid.log
+echo "!COL1	!COL2      !COL3" >> $TRAIN_WSJ0/grid.log
+grep "WORD" $TRAIN_WSJ0/hresults_nov92_grid.log | tail -1 >>$TRAIN_WSJ0/grid.log

@@ -1,0 +1,21 @@
+
+\data\
+ngram 1=5
+ngram 2=3
+ngram 3=0
+
+\1-grams:
+-0.30103	!!UNK
+-0.7781513	</s>
+-99	<s>	-0.2218487
+-0.7781513	SHORT	-0.2218487
+-0.7781513	SKIRMISH	-0.2218487
+
+\2-grams:
+-0.30103	<s> SHORT
+-0.30103	SHORT SKIRMISH
+-0.30103	SKIRMISH </s>
+
+\3-grams:
+
+\end\

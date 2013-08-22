@@ -1,0 +1,2 @@
+SOURCEKIND  = WAVEFORM
+HWAVEFILTER = 'sph2pipe -f wav -p $'

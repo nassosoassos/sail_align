@@ -1,0 +1,44 @@
+# These are used by our HTK training recipe
+#
+# Using the bash shell, I just added these to the
+# end of my .bash_profile file.
+#
+# You'll obviously need to change the paths to 
+# reflect reality in your world.
+
+# Work directories we use during training
+TRAIN_TIMIT=/home/keith/htk/timit;export TRAIN_TIMIT
+TRAIN_WSJ0=/home/keith/htk/wsj0;export TRAIN_WSJ0
+
+# Directories where the speech corpora live, you'll
+# need to have write access to these directories.
+TIMIT_DIR=/home/keith/corpus/TIMIT;export TIMIT_DIR
+WSJ0_DIR=/home/keith/corpus/wsj0;export WSJ0_DIR
+
+# Where the perl scripts we use in training are located
+TRAIN_SCRIPTS=/home/keith/htk/scripts;export TRAIN_SCRIPTS
+
+# Directory that holds common things used in training
+TRAIN_COMMON=/home/keith/htk/common;export TRAIN_COMMON
+
+# This should be set to split the training data into about 1 hour chunks.
+HEREST_SPLIT=50;export HEREST_SPLIT
+
+# Causes training to be split amoung multiple threads (for multi-core
+# machines), you'll need to have enough memory as well.
+HEREST_THREADS=1;export HEREST_THREADS
+
+#########################################################
+# Optional, used for training or testing on WSJ1 data:
+
+# Word directory for WSJ0 + WSJ1 training
+TRAIN_WSJ1=/home/keith/htk/wsj1;export TRAIN_WSJ1
+
+# Location of WSJ1 corpus
+WSJ1_DIR=/home/keith/corpus/wsj1;export WSJ1_DIR
+
+# Directory where WSJ0 and WSJ1 corpora live (WSJ0_DIR and WSJ1_DIR
+# should be children of this directory)
+WSJ_ROOT=/home/keith/corpus;export WSJ_ROOT
+
+

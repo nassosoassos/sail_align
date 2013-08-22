@@ -1,0 +1,14 @@
+# Re-estimate the parameters of each monophone HMM using Baum-Welch
+# Combine all the separate definitinos into one big hmmdefs file.
+
+# HRest parameters:
+#  -S         List of files containing feature vectors
+#  -I	     MLF containing phone labels for feature files
+#  -l         Cut out segments with this label
+#  -M         Where to store new HMM defitions
+
+HRest -A -T 1 -S $TIMIT_DIR/train.scp -I $TRAIN_TIMIT/phone.mlf -A -T 1 -l !COL1 -M $TRAIN_TIMIT/phone1 $TRAIN_TIMIT/phone0/!COL1 >>$TRAIN_TIMIT/hrest.log
+
+# Output everything from the ~h line down, this drops the beginning
+# bit which contains the global options we'll put in macros file. 
+grep -A 99999 "~h" $TRAIN_TIMIT/phone1/!COL1 >>$TRAIN_TIMIT/phone1/hmmdefs

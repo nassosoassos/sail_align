@@ -1,0 +1,23 @@
+
+\data\
+ngram 1=6
+ngram 2=4
+ngram 3=0
+
+\1-grams:
+-0.30103	!!UNK
+-0.90309	</s>
+-99	<s>	-0.243038
+-0.90309	A	-0.243038
+-0.90309	SQUEAKED	-0.243038
+-0.90309	WHEEL	-0.243038
+
+\2-grams:
+-0.30103	<s> A
+-0.30103	A WHEEL
+-0.30103	SQUEAKED </s>
+-0.30103	WHEEL SQUEAKED
+
+\3-grams:
+
+\end\

@@ -1,0 +1,17 @@
+
+
+		DUMP OF SYSTEM ALIGNMENT STRUCTURE
+
+System name:   support/test/ref/timit_sample_test_phone_word_alignment_adaptation/text_align/hyp_timit_5.129.68173-131.75975
+
+Speakers: 
+    0:  
+
+Speaker sentences   0:     #utts: 1
+id: 
+Scores: (#C #S #D #I) 8 0 0 0
+REF:  gallon of gas i'd rather not buy these 
+HYP:  gallon of gas i'd rather not buy these 
+Eval:                                        
+
+

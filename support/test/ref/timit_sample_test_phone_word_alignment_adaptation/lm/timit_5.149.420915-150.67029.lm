@@ -1,0 +1,23 @@
+
+\data\
+ngram 1=6
+ngram 2=4
+ngram 3=0
+
+\1-grams:
+-0.30103	!!UNK
+-0.90309	</s>
+-99	<s>	-0.243038
+-0.90309	GREASY	-0.243038
+-0.90309	WASH	-0.243038
+-0.90309	WATER	-0.243038
+
+\2-grams:
+-0.30103	<s> GREASY
+-0.30103	GREASY WASH
+-0.30103	WASH WATER
+-0.30103	WATER </s>
+
+\3-grams:
+
+\end\
