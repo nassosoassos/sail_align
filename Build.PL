@@ -5,6 +5,7 @@ use File::Spec::Functions;
 use File::Path qw(mkpath);
 use POSIX qw(uname);
 use LWP::Simple;
+use Archive::Extract;
 
 my $bin_dir = "bin";
 my $config_dir = "config";
@@ -40,7 +41,7 @@ my $builder = Module::Build->new(
 
 # Get the path to the HTK binaries
 my $htk_bin_dir = $builder->prompt(
-    "Due to licensing issues the following HTK binaries are required and have not included in the distribution: HCopy, HDecode, HERest, HHEd, HParse, HVite. \n".
+    "Due to licensing issues the following HTK binaries are required and have not been included in the distribution: HCopy, HDecode, HERest, HHEd, HParse, HVite. \n".
     "Please provide the directory where these are installed: ", 
     '/usr/local/bin');
 
@@ -132,12 +133,16 @@ foreach my $util_tool (@util_binaries) {
 
 # Download the acoustic models if they do not already exist
 if (!-e catfile($model_dir,"htk", "wsj_all_10000_32")) {
+    print "Downloading acoustic models from $model_url\n";
+    mkpath($model_dir);
     my $model_tgz = "models/ac_models/english/english_htk.tgz";
     getstore($model_url, "models/ac_models/english/english_htk.tgz");
-    my $command = "tar xvf $model_tgz -C $model_url"; 
-    open(MPIPE, "$command 2>&1 |") || FATAL("Cannot open pipe to run command:\n$command\n");
-}
 
+    # Extract files
+    my $archive = Archive::Extract->new( archive => $model_tgz );
+    my $ok = $archive->extract( to => $model_dir ) or die $archive->error;
+    unlink($model_tgz);
+}
 
 # Properly modify the configuration file
 my $config_file_tmpl = catfile('support', 'config', 'timit_alignment.cfg');

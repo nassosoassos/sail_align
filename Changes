@@ -1,5 +1,14 @@
 Revision history for SailAlign
 
+1.11.   Friday, August 30th 2013
+        + Third release, removed dependency from the voice activity detection module, which has been
+        found to not affect performance. The audio file is now segmented in chunks of equal length. 
+        Possible breaks within words are expected to be taken care of in the succeeding iterations. 
+        + Released on github now.
+        + Removed the acoustic models from the release file. These are now downloaded from a website.
+        + Updated the README to also include information on how to cope with the possible Audio::Wav
+        warning about ambiguous call to function. A patch is provided to correct Audio::Wav::Read.pm
+
 1.10    Wednesday, June 29th 2011
         + Second release, thanks to Jangwon Kim for pointing out some problematic
         cases of forced word alignment.

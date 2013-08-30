@@ -29,7 +29,8 @@ You may need to be connected to the internet to install dependencies :
        	  This command configures the building process. Among others it will try to detect dependencies
 	  that are not installed in your system. Ignore any messages for missing dependencies in the beginning. 
 	  Provide the folder $HTK_BIN when asked. 
-       3) ./Build installdeps
+          Internet connection is required at this point to download the acoustic models. 
+       3) sudo ./Build installdeps
        	  Run this command if you got a message for missing dependencies in the previous step.
        3) ./Build
        	  This command will build the module.
@@ -41,12 +42,23 @@ You may need to be connected to the internet to install dependencies :
 TESTING
 
 To test that the module has been properly installed you may run the following from inside the distribution folder:
->> sail_align -i support/data/timit_5.wav -t support/data/timit_5.txt -w support/data/test/timit_sample_test 
+>> sail_align -i support/data/timit_5.wav -t support/data/timit_5.txt -w support/data/test/local 
    	      -e timit_sample_test -c config/timit_alignment.cfg
 
 This will run the alignment algorithm for the audio file timit_5.wav and the corresponding transcription timit_5.txt. The 
 results will be in the working directory 'support/data/test/timit_sample_test'. You may check the tutorial in the 'docs'
 folder for additional details.
+
+FIXES
+
+In case you get a warning like the following, there is no need to worry:
+"Ambiguous call resolved as CORE::read(), qualify as such or use & at (eval 18) line 4.
+ Subroutine Audio::Wav::Read::read redefined at /usr/lib/perl5/site_perl/5.10.0/Audio/Wav/Read.pm line 316."
+It is due to a minor bug in the Audio::Wav external dependency and it does not affect sail_align's result.
+
+To avoid it you may apply the following patch:
+sudo patch /usr/lib/perl5/site_perl/5.10.0/Audio/Wav/Read.pm < support/patches/audio_wav_read.patch 
+
 
 SUPPORT AND DOCUMENTATION
 
@@ -57,7 +69,7 @@ Contact Nassos Katsamanis for technical support.
 
 LICENSE AND COPYRIGHT
 
-Copyright (C) 2010-2011 Athanasios Katsamanis (http://sipi.usc.edu/~nkatsam)
+Copyright (C) 2010-2013 Athanasios Katsamanis (http://sipi.usc.edu/~nkatsam)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
