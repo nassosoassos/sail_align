@@ -9,3 +9,4 @@ MYMETA.yml
 _build/
 bin/
 blib/
+support/test/local*
