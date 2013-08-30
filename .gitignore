@@ -1,0 +1,11 @@
+SailAlign-1.20.tar.gz
+Build
+MANIFEST.SKIP.bak
+MANIFEST.bak
+META.json
+META.yml
+MYMETA.json
+MYMETA.yml
+_build/
+bin/
+blib/
