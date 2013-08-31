@@ -1,6 +1,6 @@
 Revision history for SailAlign
 
-1.11.   Friday, August 30th 2013
+1.20   Friday, August 30th 2013
         + Third release, removed dependency from the voice activity detection module, which has been
         found to not affect performance. The audio file is now segmented in chunks of equal length. 
         Possible breaks within words are expected to be taken care of in the succeeding iterations. 
