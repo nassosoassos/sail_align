@@ -188,6 +188,9 @@ sub run_hdecode_recognize_lm {
     if ($configuration->{word_context}) {
         $conf_hash{ALLOWXWRDEXP}=$configuration->{word_context};
     }
+    if ($configuration->{no_num_escapes}) {
+        $conf_hash{NONUMESCAPES}=$configuration->{no_num_escapes};
+    }
     my $trace_level = $configuration->{log_level};
     my $display_conf_settings =0;
     my $print_arguments = 0;
@@ -362,6 +365,9 @@ sub run_hvite_align {
     }
     if ($alignment_conf->{word_context}) {
         $conf_hash{ALLOWXWRDEXP}=$alignment_conf->{triphone_context};
+    }
+    if ($alignment_conf->{no_num_escapes}) {
+        $conf_hash{NONUMESCAPES}=$alignment_conf->{no_num_escapes};
     }
     if ($alignment_conf->{output_words}) {
 		$label_format = 'S';    	

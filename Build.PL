@@ -10,8 +10,8 @@ use Archive::Extract;
 my $bin_dir = "bin";
 my $config_dir = "config";
 my $support_dir = "support";
-my $model_dir = "models/ac_models/english";
-my $model_url = "http://cvsp.cs.ntua.gr/~nassos/sail_align/english_htk.tgz";
+my $model_dir = "models/ac_models";
+my $model_url = "http://cvsp.cs.ntua.gr/~nassos/sail_align";
 my $required_modules_hash_ref = {
        'Log::Log4perl' => '1.31',
        'Math::Random' => '0.71',
@@ -132,33 +132,51 @@ foreach my $util_tool (@util_binaries) {
 }
 
 # Download the acoustic models if they do not already exist
-if (!-e catfile($model_dir,"htk", "wsj_all_10000_32")) {
-    print "Downloading acoustic models from $model_url\n";
-    mkpath($model_dir);
-    my $model_tgz = "models/ac_models/english/english_htk.tgz";
-    getstore($model_url, "models/ac_models/english/english_htk.tgz");
+if (!-e catdir($model_dir, "english", "htk", "wsj_all_10000_32")) {
+    print "Downloading english acoustic models from $model_url\n";
+    mkpath(catdir($model_dir,"english"));
+    my $model_tgz = catfile($model_dir, "english", "english_htk.tgz");
+    getstore("$model_url/english_htk.tgz", $model_tgz);
 
     # Extract files
     my $archive = Archive::Extract->new( archive => $model_tgz );
-    my $ok = $archive->extract( to => $model_dir ) or die $archive->error;
+    my $ok = $archive->extract( to => catdir($model_dir, "english") ) or die $archive->error;
     unlink($model_tgz);
 }
 
-# Properly modify the configuration file
-my $config_file_tmpl = catfile('support', 'config', 'timit_alignment.cfg');
-my $config_file = catfile($config_dir, 'timit_alignment.cfg');
-open(CFG_TMPL, $config_file_tmpl) or die("Cannot open file $config_file_tmpl for reading");
-open(CFG, ">$config_file") or die("Cannot open file $config_file for writing");
-while (<CFG_TMPL>) {
-    my $line = $_;
-    chomp($line);
-    if ($line =~ /^\$ROOTPATH\s+=\s+\"([^\"]+)\"/) {
-        my $default_path = $1;
-        $line =~ s/\Q$default_path\E/$root_path/;
-    } 
-    print CFG $line."\n";
+if (!-e catdir($model_dir, "spanish", "htk", "voxforge_all_8")) {
+    print "Downloading spanish acoustic models from $model_url\n";
+    mkpath(catdir($model_dir,"spanish"));
+    my $model_tgz = catfile($model_dir, "spanish", "spanish_htk.tgz");
+    getstore("$model_url/spanish_htk.tgz", $model_tgz);
+
+    # Extract files
+    my $archive = Archive::Extract->new( archive => $model_tgz );
+    my $ok = $archive->extract( to => catdir($model_dir, "spanish") ) or die $archive->error;
+    unlink($model_tgz);
 }
-close(CFG);
-close(CFG_TMPL);
+
+
+# Properly modify the configuration files
+my @config_files = ("timit_alignment.cfg", "spanish_alignment.cfg");
+
+foreach my $conf (@config_files)
+{ 
+    my $config_file_tmpl = catfile('support', 'config', $conf);
+    my $config_file = catfile($config_dir, $conf);
+    open(CFG_TMPL, $config_file_tmpl) or die("Cannot open file $config_file_tmpl for reading");
+    open(CFG, ">$config_file") or die("Cannot open file $config_file for writing");
+    while (<CFG_TMPL>) {
+        my $line = $_;
+        chomp($line);
+        if ($line =~ /^\$ROOTPATH\s+=\s+\"([^\"]+)\"/) {
+            my $default_path = $1;
+            $line =~ s/\Q$default_path\E/$root_path/;
+        } 
+        print CFG $line."\n";
+    }
+    close(CFG);
+    close(CFG_TMPL);
+}
 
 $builder->create_build_script();
