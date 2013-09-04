@@ -1,0 +1,3 @@
++ Organize tests better (using ./Build test)
++ Allow for parallel processing (using parallel versions of HVite and HERest)
++ Release greek acoustic models.
