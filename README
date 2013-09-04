@@ -42,12 +42,15 @@ You may need to be connected to the internet to install dependencies :
 TESTING
 
 To test that the module has been properly installed you may run the following from inside the distribution folder:
->> sail_align -i support/data/timit_5.wav -t support/data/timit_5.txt -w support/data/test/local 
+>> sail_align -i support/data/timit_5.wav -t support/data/timit_5.txt -w support/test/local \
    	      -e timit_sample_test -c config/timit_alignment.cfg
 
 This will run the alignment algorithm for the audio file timit_5.wav and the corresponding transcription timit_5.txt. The 
 results will be in the working directory 'support/data/test/timit_sample_test'. You may check the tutorial in the 'docs'
 folder for additional details.
+For spanish:
+>> sail_align -i support/data/spanish/voxforge_spanish.wav -t support/data/spanish/voxforge_spanish.txt -w support/test/local_spanish \
+   	      -e spanish_test -c config/spanish_alignment.cfg
 
 FIXES
 
