@@ -13,6 +13,8 @@ language/dico.dic
 language/freq_words.list
 language/output_symbols.list
 language/phones.list
+language/spanish/phones.list
+language/spanish/voxforge_lexicon_spanish
 language/timit.led
 language/timit2cmu_phones.map
 language/timit_dictionary.dic
@@ -44,6 +46,19 @@ Makefile.PL
 MANIFEST			This list of files
 META.json
 META.yml
+models/ac_models/english/htk/wsj_all_10000_32/hmmdefs
+models/ac_models/english/htk/wsj_all_10000_32/macros
+models/ac_models/english/htk/wsj_all_10000_32/stats_hmm82
+models/ac_models/english/htk/wsj_all_10000_32/tiedlist
+models/ac_models/english/htk/wsj_si84_2750_8/hmmdefs
+models/ac_models/english/htk/wsj_si84_2750_8/macros
+models/ac_models/english/htk/wsj_si84_2750_8/stats_hmm42
+models/ac_models/english/htk/wsj_si84_2750_8/tiedlist
+models/ac_models/spanish/htk/voxforge_all_8/herest.log
+models/ac_models/spanish/htk/voxforge_all_8/hmmdefs
+models/ac_models/spanish/htk/voxforge_all_8/macros
+models/ac_models/spanish/htk/voxforge_all_8/stats
+models/ac_models/spanish/htk/voxforge_all_8/tiedlist
 models/vad/MattModel.bin
 models/vad/Model.bin
 README
@@ -82,9 +97,13 @@ support/bin/linux_x86_64/vad
 support/config/audio_books.cfg
 support/config/coup_ther_alignment.cfg
 support/config/english_alignment.cfg
+support/config/greek_alignment.cfg
+support/config/spanish_alignment.cfg
 support/config/timit_alignment.cfg
 support/config/timit_alignment_adapted.cfg
 support/config/vp_alignment.cfg
+support/data/spanish/voxforge_spanish.txt
+support/data/spanish/voxforge_spanish.wav
 support/data/timit_5.phn
 support/data/timit_5.txt
 support/data/timit_5.wav
@@ -93,6 +112,7 @@ support/patches/audio_wav_read.patch
 support/scripts/add_noise.bash
 support/scripts/add_spkr_to_lab.pl
 support/scripts/check_alignments.py
+support/scripts/concatenate_spanish_voxforge_data.bash
 support/scripts/corrupt_text.pl
 support/scripts/evaluate_alignment.pl
 support/scripts/find_monophones.pl
@@ -502,3 +522,4 @@ t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+TODO

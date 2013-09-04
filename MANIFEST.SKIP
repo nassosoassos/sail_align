@@ -57,5 +57,4 @@
 # Avoild local tests and acoustic models
 ^support/test/local*
 ^support/resources/*
-^models/ac_models/english/htk/*
 ^config/*
