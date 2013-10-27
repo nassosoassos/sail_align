@@ -134,6 +134,7 @@ sub align_transcriptions {
 	}
 	my $hyp_start_times = $hyp_trans->{start_times};
 	my $hyp_end_times = $hyp_trans->{end_times};
+
 	my $ref_start_times = $ref_trans->{start_times};
 	my $ref_end_times = $ref_trans->{end_times};
 	my $ref_uncertainties = $ref_trans->{uncertainties};
@@ -300,29 +301,26 @@ sub read_sclite_alignment_file {
 				my $ref_word = $run_ref_words[$word_counter];
 				my $hyp_word = $run_hyp_words[$word_counter];
 				
-				if ($ref_word =~ /[a-z]/) {
+				if ($ref_word eq $hyp_word) {
 					push(@ref_words, uc($ref_word));
 					push(@hyp_words, uc($hyp_word));
 					push(@alignment_map, $hyp_index);
 					$hyp_index++;
 					$ref_index++;
 				} 
-				elsif ($ref_word =~ /[A-Z]/) {
+				elsif ($ref_word =~ /\*+/) {
+					# In case stars have been found
+					push(@hyp_words, uc($hyp_word));
+					$hyp_index++;
+				}
+				else {
 					push(@ref_words, uc($ref_word));
 					push(@alignment_map, -1);
 					$ref_index++;
-					
-					if ($hyp_word =~ /[A-Z]/) {
-						push(@hyp_words, uc($hyp_word));
-						$hyp_index++;
-					}
-				}
-				else {
-					# In case stars have been found
-					if ($hyp_word =~ /[A-Z]/) {
-						push(@hyp_words, uc($hyp_word));
-						$hyp_index++;
-					}						
+                    if ($hyp_word !~ /^\*+/) {
+    					push(@hyp_words, uc($hyp_word));
+	    				$hyp_index++;
+                    }
 				}
 			}
 			$found_ref_and_hyp = 0;

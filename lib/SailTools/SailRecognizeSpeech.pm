@@ -343,7 +343,7 @@ sub filter_transcriptions {
                 }
 				my $model = $elements[2];
                 if (defined($model)) {
-    				if (grep(/$model/,@filtered_models_arr)) {
+    				if (grep(/^$model$/,@filtered_models_arr)) {
 	    				if ($end_time>0) {
 		    				push(@transcription, "$start_time $end_time $label");										
 			    		}
