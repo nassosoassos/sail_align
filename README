@@ -51,6 +51,9 @@ folder for additional details.
 For spanish:
 >> sail_align -i support/data/spanish/voxforge_spanish.wav -t support/data/spanish/voxforge_spanish.txt -w support/test/local_spanish \
    	      -e spanish_test -c config/spanish_alignment.cfg
+For greek:
+>> sail_align -i support/data/greek/greeksyn_05.wav -t support/data/greek/greeksyn_05.txt -w support/test/local_greek \
+   	      -e greek_test -c config/greek_alignment.cfg
 
 FIXES
 
