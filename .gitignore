@@ -12,3 +12,4 @@ bin/
 blib/
 support/test/local*
 config/*
+.DS_store

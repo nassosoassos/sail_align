@@ -156,9 +156,20 @@ if (!-e catdir($model_dir, "spanish", "htk", "voxforge_all_8")) {
     unlink($model_tgz);
 }
 
+if (!-e catdir($model_dir, "greek", "htk", "greekdb_all_14")) {
+    print "Downloading greek acoustic models from $model_url\n";
+    mkpath(catdir($model_dir,"greek"));
+    my $model_tgz = catfile($model_dir, "greek", "greek_htk.tgz");
+    getstore("$model_url/greek_htk.tgz", $model_tgz);
+
+    # Extract files
+    my $archive = Archive::Extract->new( archive => $model_tgz );
+    my $ok = $archive->extract( to => catdir($model_dir, "greek") ) or die $archive->error;
+    unlink($model_tgz);
+}
 
 # Properly modify the configuration files
-my @config_files = ("timit_alignment.cfg", "spanish_alignment.cfg");
+my @config_files = ("timit_alignment.cfg", "spanish_alignment.cfg","greek_alignment.cfg");
 
 foreach my $conf (@config_files)
 { 
