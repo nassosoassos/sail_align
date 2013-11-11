@@ -45,7 +45,7 @@
 ^MANIFEST\.SKIP
 
 # Avoid archives of this distribution
-\bSailAlign-[\d\.\_]+
+\bSailAlign-[v\d\.\_]+
 
 # Avoid versioning information
 \B\.git\b

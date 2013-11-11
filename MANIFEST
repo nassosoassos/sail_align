@@ -11,6 +11,10 @@ language/corrections.map
 language/deletions.list
 language/dico.dic
 language/freq_words.list
+language/greek/dirha_latin.dict
+language/greek/Greek400k.dictionary
+language/greek/greek_dictionary.dic
+language/greek/phones.list
 language/output_symbols.list
 language/phones.list
 language/spanish/phones.list
@@ -54,6 +58,10 @@ models/ac_models/english/htk/wsj_si84_2750_8/hmmdefs
 models/ac_models/english/htk/wsj_si84_2750_8/macros
 models/ac_models/english/htk/wsj_si84_2750_8/stats_hmm42
 models/ac_models/english/htk/wsj_si84_2750_8/tiedlist
+models/ac_models/greek/htk/greekdb_all_14/hmmdefs
+models/ac_models/greek/htk/greekdb_all_14/macros
+models/ac_models/greek/htk/greekdb_all_14/stats
+models/ac_models/greek/htk/greekdb_all_14/tiedlist
 models/ac_models/spanish/htk/voxforge_all_8/herest.log
 models/ac_models/spanish/htk/voxforge_all_8/hmmdefs
 models/ac_models/spanish/htk/voxforge_all_8/macros
@@ -102,6 +110,8 @@ support/config/spanish_alignment.cfg
 support/config/timit_alignment.cfg
 support/config/timit_alignment_adapted.cfg
 support/config/vp_alignment.cfg
+support/data/greek/greeksyn_05.txt
+support/data/greek/greeksyn_05.wav
 support/data/spanish/voxforge_spanish.txt
 support/data/spanish/voxforge_spanish.wav
 support/data/timit_5.phn
