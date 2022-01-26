@@ -54,9 +54,11 @@ For spanish:
 For greek:
 >> sail_align -i support/data/greek/greeksyn_05.wav -t support/data/greek/greeksyn_05.txt -w support/test/local_greek \
    	      -e greek_test -c config/greek_alignment.cfg
+For norwegian:
+>> sail_align -i support/data/norwegian/test.wav -t support/data/norwegian/test.txt -w support/test/local_norwegian \
+   	      -e norwegian_test -c config/norwegian_alignment.cfg
 
 FIXES
-
 In case you get a warning like the following, there is no need to worry:
 "Ambiguous call resolved as CORE::read(), qualify as such or use & at (eval 18) line 4.
  Subroutine Audio::Wav::Read::read redefined at /usr/lib/perl5/site_perl/5.10.0/Audio/Wav/Read.pm line 316."
