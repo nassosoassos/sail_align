@@ -114,7 +114,7 @@ $root_logger->debug("audio:$audio_file text: $text_file");
 my $name = $audio_bname;
 
 # Load configuration file and initialize the experiment
-do($configuration_file);
+do('./' . $configuration_file);
 my $experiment = new SailTools(\%cfg);
 $root_logger->debug("Initialized experiment $EXPERIMENT_ID, working dir: ".$cfg{working_dir});
 
