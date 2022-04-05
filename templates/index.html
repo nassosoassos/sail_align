@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+<style>
+  h2 {text-align: center;}
+  p {text-align: center;}
+  div {text-align: center;}
+  </style>
+
+{% block body %}
+<!doctype html>
+<html>
+  <body>
+    <h1>{{ title }}</h1>
+    <form style="margin: auto; width: 220px;" method="POST" action="" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+  </body>
+</html>
+{% endblock %}

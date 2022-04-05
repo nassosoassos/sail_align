@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">	
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	  <!-- <link rel="shortcut icon" href="{{ url_for('static', filename = '') }}" type="image/x-icon"> -->
+	  <style type="text/css">
+	  	.center {
+	  		display: block;
+  			margin-left: auto;
+  			margin-right: auto;
+  			width: 29%;
+  			height: 29%;
+		}
+		h1 {text-align: center;
+			margin-top: 0;
+			}
+		h4 {text-align: center;
+			margin-top: 0;
+			}
+	  </style>
+	{% block head %}{% endblock %}
+</head>
+
+<body style="margin-top:12%;">
+	{% block body %}{% endblock %}
+</body>
+</html>

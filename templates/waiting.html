@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<h4> Generating Alignment ... </h4>
+{% endblock %}
+
+{% block body %}
+<div>
+	<img class="center" src="{{ img }}">
+</div>
+
+
+
+
+<script type="text/javascript">
+	var request = new XMLHttpRequest();
+	request.open('POST', '/processing');
+
+	request.onload = function() {
+	  if (request.status === 200 && request.responseText === 'done') {
+	    // long process finished successfully, redirect user
+	    window.location = '/success';
+	  } else {
+	    // ops, we got an error from the server
+	    alert('Something went wrong.');
+	  }
+	};
+
+	request.onerror = function() {
+	  // ops, we got an error trying to talk to the server
+	  alert('Something went wrong.');
+	};
+
+	request.send();
+</script>
+{% endblock %}
